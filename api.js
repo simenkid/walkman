@@ -24,17 +24,7 @@ walkman.mapInstrumentToBeat = function (names) {
 
 };
 
-function Walkman(settings) {
-    this.speed = settings.speed;    // beats/second
-    this.instruments = {};
-    this.audioContext = new AudioContext();
-    this.symbols = [];
-    this.cursor = 0;
 
-    if (settings.instruments) {
-        // create instruments into instruments
-    }
-}
 
 Walkman.prototype.loadSymbols = function (symbols) {
     this.symbols = symbols;
@@ -45,18 +35,7 @@ Walkman.prototype.clearSymbols = function () {
     this.symbols = null;
 };
 
-Walkman.prototype.play = function () {
-    // this.cursor
-};
 
-Walkman.prototype.stop = function () {
-    if (this.audioContext)
-        this.audioContext.close().done();
-};
-
-Walkman.prototype.pause = function () {
-
-};
 
 // AudioContext
 // AudioContext.close()

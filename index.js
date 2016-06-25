@@ -4,7 +4,7 @@ function Walkman(settings) {
     this.row = settings.row || 5;
     this.col = settings.col || 8,
 
-    this.period = settings.period || 1000;  // defaul: 1000 ms
+    this.period = settings.period || 1;     // defaul: 1 s
     this.speed = settings.speed || 4;       // default: 4 beats/period
 
     this.instruments = {};                  // { key: instr }
@@ -48,9 +48,16 @@ Walkman.prototype.defineEffect = function (effectName, instrObjs) {
             double = instObj.double;
 
             if (double) {
-                instr.schedule(time, [ { time: 0, note: note }, { time: interval/2, note: note } ]);
+                // instr.schedule(time, [ { time: 0, note: note, duration: 1 }, { time: interval/2, note: note } ]);
+                // instr.schedule(time, [ [ 0, note ], [ interval/2, note ] ]);
+                instr.play(note, time);
+                instr.play(note, time + interval/2);
+
+
             } else {
-                instr.schedule(time, [ { time: 0, note: note } ]);
+                // instr.schedule(time, [ { time: 0, note: note, release: 1 } ]);
+                // instr.schedule(time, [ [ 0, note ] ]);
+                instr.play(note, time);
             }
         });
     };
@@ -113,9 +120,9 @@ Walkman.prototype.play = function (symbols) {
 
 Walkman.prototype.stop = function () {
     if (this.audioContext) {
-        this.audioContext.close().done();
-        this.audioContext = null;
-        this.audioContext = new AudioContext();
+        this.audioContext.suspend();
+        // this.audioContext = null;
+        // this.audioContext = new AudioContext();
     }
 };
 

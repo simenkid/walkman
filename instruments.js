@@ -29,3 +29,10 @@ voice_oohs
 whistle
 woodblock
 xylophone
+
+
+For non-production environments, such as jsFiddle, replace raw.github.com with rawgit.com:
+http://rawgit.com/user/repo/branch/file.js
+
+For production environments, replace raw.githubusercontent.com with cdn.rawgit.com
+http://cdn.rawgit.com/user/repo/tag/file.js

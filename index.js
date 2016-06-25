@@ -122,6 +122,8 @@ Walkman.prototype.pause = function () {
     }
 };
 
+module.exports = Walkman;
+
 // AudioContext
 // AudioContext.close()
 // AudioContext.createBuffer()

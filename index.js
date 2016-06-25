@@ -64,8 +64,12 @@ Walkman.prototype.defineEffectMap = function (map) {
     var self = this;
     map.forEach(function (effectsAtPos) {
         effectsAtPos.forEach(function (effectName) {
-            var effectScheduleAt = self.playEffect[effectName];
-            if (effectScheduleAt !== null && typeof effectScheduleAt !== 'function')
+            var effectScheduleAt;
+
+            if (effectName)
+                effectScheduleAt = self.playEffect[effectName];
+
+            if (effectName !== null && typeof effectScheduleAt !== 'function')
                 throw Error('Invalid effect definition: ' + effectName);
         });
     });

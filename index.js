@@ -119,17 +119,23 @@ Walkman.prototype.play = function (symbols) {
 };
 
 Walkman.prototype.stop = function () {
-    if (this.audioContext) {
-        this.audioContext.suspend();
-        // this.audioContext = null;
-        // this.audioContext = new AudioContext();
+    //this.instruments[instrName]
+
+    for (var k in this.instruments) {
+        if (this.instruments.hasOwnProperty(k)) {
+            this.instruments[k].stop();
+        }
     }
+    // if (this.audioContext) {
+    //     this.audioContext.suspend();
+    //     this._isSuspend = true;
+    // }
 };
 
 Walkman.prototype.pause = function () {
     if (this.audioContext) {
-        this._isSuspend = true;
         this.audioContext.suspend();
+        this._isSuspend = true;
     }
 };
 
